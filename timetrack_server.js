@@ -1,8 +1,8 @@
 /*
 * @Author: 89623
 * @Date:   2019-06-16 13:49:19
-* @Last Modified by:   89623
-* @Last Modified time: 2019-06-17 00:07:54
+* @Last Modified by:   lilongxian
+* @Last Modified time: 2019-06-17 00:29:58
 */
 
 // 1....
@@ -50,7 +50,7 @@ var server= http.createServer(function(req,res){
 		
 	}
 })
-console.log('Server started...')
+console.log('Server started....')
 
 db.connect();
 db.query(  //建表SQL
