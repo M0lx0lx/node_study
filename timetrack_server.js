@@ -64,6 +64,6 @@ db.query(  //建表SQL
 	function(err){
 		if(err) throw err;
 		console.log('mysql server started...')
-	server.listen(3000, '127.0.0.1')   //启动HTTP服务器
+		server.listen(3000)   //启动HTTP服务器
 	}
 )

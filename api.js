@@ -124,6 +124,33 @@ const server_public= http.createServer(function(req,res){
 	var url= parse(req.url),
 		path= join(root, url.pathname)  //构造绝对路径
 
+
+    console.log('请求文件：',path)
+
+    var mime = {   //类型
+		 "css": "text/css",
+		 "gif": "image/gif",
+		 "html": "text/html",
+		 "ico": "image/x-icon",
+		 "jpeg": "image/jpeg",
+		 "jpg": "image/jpeg",
+		 "js": "text/javascript",
+		 "json": "application/json",
+		 "pdf": "application/pdf",
+		 "png": "image/png",
+		 "svg": "image/svg+xml",
+		 "swf": "application/x-shockwave-flash",
+		 "tiff": "image/tiff",
+		 "txt": "text/plain",
+		 "wav": "audio/x-wav",
+		 "wma": "audio/x-ms-wma",
+		 "wmv": "video/x-ms-wmv",
+		 "xml": "text/xml"
+        }
+
+    //未知的类型一律用"text/plain"类型
+    var contentType = mime[path.slice(path.lastIndexOf('.')+1)] || "text/plain";
+
 	fs.stat(path, function(err, stat){
 		if(err){
 			if('ENOENT' == err.code){
@@ -134,8 +161,9 @@ const server_public= http.createServer(function(req,res){
 				res.end('Internal Server Error')
 			}
 		} else{
-			res.setHeader('Content-Length', stat.size)   //用 stat 对象的属性设置Content-Length
-			stream= fs.createReadStream(path)   //创建fs.ReadStream
+            res.setHeader('content-type', contentType)
+            res.setHeader('Content-Length', stat.size)   //用 stat 对象的属性设置Content-Length
+			stream= fs.createReadStream(path).pipe(res)   //创建fs.ReadStream
 			stream.pipe(res)   //res.end() 会在 stream.pipe()内部调用
 			stream.on('error', function(err){
 				res.statusCode= 500
