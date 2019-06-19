@@ -120,9 +120,43 @@ const server= http.createServer(function(req,res){
 
 console.log('创建静态资源服务器')
 const server_public= http.createServer(function(req,res){
-	console.log('请求方式：',req.method)
 	var url= parse(req.url),
 		path= join(root, url.pathname)  //构造绝对路径
+
+
+	// if(/Api/.test(url.pathname)){
+    //     let sent_data= JSON.stringify({UserCode: 'shenxz', UserPsw: '123456'})
+    //     var sendmsg='';
+    //     let t=http.request({
+    //         host:"localhost",
+    //         port: 9001,
+    //         path: '/Api/MobileAuthApi/Login',
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type':'application/json',
+    //             'Content-Length': Buffer.byteLength(sent_data)
+    //         }
+    //     }, function(req) {      //发出请求，加上参数，然后有回调函数
+    //         req.on("data", function(chunk) {               //监听data,接受数据
+    //             sendmsg += chunk;                         //把接受的数据存入定放的sendmsg
+    //         });
+    //         req.on("end", function(d) {                     //监听end事件，请求结束后调用
+    //             var list=JSON.parse(sendmsg);            //对接受到的数据流进行编码
+    //             console.log('结果有吗：',sendmsg)                  //打印出结果
+	//
+    //         });
+    //         console.log('有值么：',sendmsg)
+    //     });
+    //     t.on('error', (e) => {
+    //         console.error(`请求遇到问题: ${e.message}`);
+    //     });
+    //     t.write(sent_data);
+    //     t.end();
+    //     res.setHeader('content-type', 'text/plain')
+    //     res.setHeader('Content-Length', Buffer.byteLength(sendmsg))   //用 stat 对象的属性设置Content-Length
+    //     res.end(sendmsg)
+    //     return
+	// }
 
 
     console.log('请求文件：',path)
@@ -171,8 +205,8 @@ const server_public= http.createServer(function(req,res){
 			})
 		}
 	})
-	
-	// stream.on('data',function(chunk){
+
+    // stream.on('data',function(chunk){
 	// 	res.write(chunk)   //将文件数据写到响应中
 	// })
 	// stream.on('end', function(){
