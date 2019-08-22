@@ -1,2 +1,4 @@
 ﻿node_modules/
 .idea/
+./photo/mode_modules
+./test_socket/mode_modules
