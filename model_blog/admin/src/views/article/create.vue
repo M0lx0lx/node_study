@@ -12,7 +12,7 @@
           <Option v-for="(item, index) in categoryList" :value="item.id" :key="index">{{item.name}}</Option>
         </Select>
       </FormItem>
-      <FormItem label="文章封面" prop="cover">
+     <!--  <FormItem label="文章封面" prop="cover">
         <div class="cover">
           <div class="upload">
             <Upload
@@ -33,7 +33,7 @@
             <img :src="formValidate.cover" alt="cover">
           </div>
         </div>
-      </FormItem>
+      </FormItem> -->
       <FormItem label="文章内容" prop="content">
         <mavon-editor
           v-model="formValidate.content"
@@ -121,6 +121,8 @@
       // 更新
       async _createArticle() {
         this.formValidate.id = this.id;
+        this.formValidate.cover='no_img'
+        console.log('formValidate:',this.formValidate)
 
         try {
           await this.createArticle(this.formValidate);
