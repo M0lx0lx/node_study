@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>js调用摄像头拍照上传图片</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/main.css" type="text/css" media="all">
+</head>
+<body>
+    <div class='box_'>
+        <button onclick="openMedia()">开启摄像头</button>
+        <button onclick="takePhoto()">拍照</button>
+        <button onclick="closeMedia()">关闭摄像头</button>
+    </div>
+    <div class='box_ camera'>
+        <video id="video" class='bg_img' autoplay="autoplay"></video>
+        <canvas id="canvas" class='bg_img'></canvas>
+        <img id="imgTag" class='bg_img' src="./images/bg.jpg" alt="imgTag">
+    </div>
+    <script src="./js/main.js"></script>
+</body>
