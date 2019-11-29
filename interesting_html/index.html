@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" manifest="cache.appcache">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <img src="http://test.chedaibao.com/newimg/regist_icon/bg_Login.png">
+    <a href="test.html" onpagehide="return test()">next page</a>
+    <!--<form action="" method="GET">-->
+        First Name: <input type="text" name="first_name">  <br>
+
+        Last Name: <input type="text" name="last_name">
+        <input type="button" value="get" onclick="get_runoob()">
+    <!--</form>-->
+
+    <form action="http://127.0.0.1:8081/process_post" method="POST">
+        First Name: <input type="text" name="first_name">  <br>
+
+        Last Name: <input type="text" name="last_name">
+        <input type="submit" value="post">
+    </form>
+
+    <h3>文件上传：</h3>
+    选择一个文件上传: <br />
+    <form action="/file_upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" size="50" />
+        <br />
+        <input type="submit" value="上传文件" />
+    </form>
+    <div id="test"></div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function (event) {
+        console.log('DOM生成');
+        document.getElementById('test').innerHTML=JSON.stringify(event);
+    });
+    document.cookie="name=John Smith; expires=Thu, 18 Dec 2043 12:00:00 GMT; path=/";
+    var t=document.cookie
+    console.log('set one cookie:',t)
+    function get(){
+        loadXMLDoc({
+            url:'process_get',
+            data: 'first_name=llk',
+            callback: (e)=>{
+                console.log('vv:',JSON.parse(e))
+            }
+        })
+    }
+    function get_runoob(){
+
+        loadXMLDoc({
+            url:'get_chedaibao',
+            callback: (e)=>{
+                document.write(JSON.parse(e))
+            }
+        })
+    }
+    function loadXMLDoc({url,method='get',data,is_async=true,callback}) {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp=new XMLHttpRequest();
+        }
+        else {
+            // IE6, IE5 浏览器执行代码
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function() {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                callback(xmlhttp.responseText)
+            }
+        }
+        var dat='';
+        method == 'get'?dat= url + '?' + data:dat=data
+        xmlhttp.open(method,dat,is_async);
+        xmlhttp.send(dat);
+    }
+</script>
+</html>

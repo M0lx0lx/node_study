@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8"utf-8">
+    <title>Bouncing balls</title>
+    <style type="text/css">
+      .transf{
+        position: absolute;
+
+        background:  yellow;
+        width: 200px;
+        height: 200px;
+        transition: all .4s;
+        animation:myfirst 5s infinite;
+      }
+      .transf:hover{
+        transform: rotate(30deg);
+      }
+      .transi{
+        background: red;
+        margin-top: 250px;
+        width: 200px;
+        height: 200px;
+        transition: all .4s;
+        animation:myfirst2 5s infinite;
+      }
+      .transi:hover{
+        margin-left: 30px;
+      }
+
+      @keyframes myfirst
+      {
+        0% {left:0;top:0;}
+        25% {left:200px;top:0;}
+        50% {left:200px;top:200px;}
+        75% {left:0;top:200px;}
+        100% {left:0;top:0;}
+      }
+      @keyframes myfirst2
+      {
+        0% {transform: translate(0,0);}
+        25% {transform: translate(200px,0);}
+        50% {transform: translate(200px,200px);}
+        75% {transform: translate(0,200px);}
+        100% {transform: translate(0,0);}
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="transf"></div>
+    <div class="transi"></div>
+    <script type="text/javascript">
+      // function test1(name,age){
+      //   this.name=name;
+      //   this.age=age;
+      //   this.sayName=function(){
+      //     return (this.name || 'Mixx');
+      //   }
+      //   console.log('x');
+      // }
+      // var one= new test1('Mr.Li',29);
+      // one.sayAge=function(){
+      //   return this.age;
+      // }
+      //
+      // console.log('alert:',one,';test1:');
+      // var two= new test1();
+      // console.log('alert:',two.sayName());
+      (function(){
+
+      })()
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>animation</title>
+    <style>
+        .box_body{
+            margin: 100px;
+            position: relative;
+            width: 200px;
+            height: 400px;
+        }
+        .ani1{
+            position: absolute;
+            top: 0;
+            left: 0px;
+            width: 40px;
+            height: 40px;
+            background: red;
+            transition: all .4s;
+            /*animation: leftx1 1s forwards;*/
+        }
+        /*@keyframes leftx1 {*/
+            /*10%{*/
+                /*left: -40px;*/
+            /*}*/
+            /*100%{*/
+                /*left: 0px;*/
+            /*}*/
+        /*}*/
+        .ani1_form{
+            position: absolute;
+            top: 0;
+            left: -50px;
+            width: 40px;
+            height: 40px;
+            background: red;
+            transition: all .4s;
+            /*animation: leftx2 1s forwards;*/
+        }
+        /*@keyframes leftx2 {*/
+            /*10%{*/
+                /*left: -20px;*/
+            /*}*/
+            /*100%{*/
+                /*left: -50px;*/
+            /*}*/
+        /*}*/
+        .ani2{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: pink;
+            transition: all .4s;
+        }
+    </style>
+</head>
+<body>
+    <div class="box_body">
+        <div class="ani1" onclick="hidd1(this)"></div>
+        <div class="ani2" onclick="hidd2(this)"></div>
+    </div>
+</body>
+<script>
+    function hidd1(e){
+        e.setAttribute('class',e.getAttribute('class') === 'ani1'?'ani1_form':'ani1')
+        console.log(e.getAttribute('class'))
+    }
+    function hidd2(e){
+        console.log(e.getAttribute('class'))
+    }
+</script>
+</html>
