@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简单的聊天室</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <meta content="fullscreen=yes,useHistoryState=yes,transition=yes" name="Apple-Config" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no,email=no" name="format-detection" />
+    <meta content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)" name="viewport" />
+</head>
+<body>
+    <div id="content">
+        <div class="room">
+            <span>当前聊天室：</span>
+            <span id="room"></span>
+        </div>
+        <div class="room_list">
+            <div>聊天室列表：</div>
+            <div id="room_list"></div>
+        </div>
+        <div id="messages"></div>
+        <form id="send_form">
+            <input id="send_message" />
+            <input id="send_button" type="submit" value="Send" />
+
+            <div id="help">
+                命令功能介绍:
+                <ul>
+                    <li>改变昵称:<dode>/nick [user name]</dode></dode></li>
+                    <li>新建/更换聊天室:<dode>/join [room name]</dode></dode></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+<script src="/socket.io/lib/socket.io.js" type="text/javascript"></script>
+<script src="http://code.jquery.com/jquery-1.8.0.min.js" type="text/javascript"></script>
+<script src="js/chat.js" type="text/javascript"></script>
+<script src="js/chat_ui.js" type="text/javascript"></script>
+</body>
+</html>

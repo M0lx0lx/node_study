@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+    <a href="javascript:window.history.go(-1)">go back</a>
+
+</body>
+<script>
+    var t= document.cookie;
+    console.log('have one cookie:',t)
+
+    //获得浏览器宽高
+    var scWid = innerWidth||document.body.offsetWidth;
+    var scHei = innerHeight ||document.body.offsetHeight;
+    var oBody = document.getElementsByTagName("body")[0];
+
+    function random_(a){
+        return Math.random()*a
+    }
+
+    //创建雪花构造函数
+    function SnowFlake(par,scWid,scHei){
+        this.par = par;
+        this.scWid = scWid;
+        this.scHei = scHei;
+        this.createFlake();
+    }
+    //创建雪花成员变量
+    SnowFlake.prototype.createFlake = function(){
+        this.width = random_(50);
+        this.maxL = this.scWid - this.width-7;
+        this.speed=Math.log(this.width);
+        // console.log(parseInt(random_(10)),'width:',this.width)
+        this.ele = document.createElement("img");
+        this.ele.src = `./images/flower${parseInt(random_(10))}.jpg`;
+        this.ele.style.cssText = `position:absolute;background:pink;
+            left:${random_(this.maxL)}px;top:${this.width}px;width:${this.width}px;`;
+        oBody.appendChild(this.ele);
+        this.fall();
+    }
+    //控制雪花成员下落方法
+    SnowFlake.prototype.fall = function(){
+        (function(that){
+            that.time = setInterval(function(){
+                var nowTop = parseInt(that.ele.style.top);
+                that.ele.style.top = nowTop + that.speed + "px";
+                if(nowTop>=(that.scHei-that.width-100)){
+                    clearInterval(that.time);
+                    //移除雪花
+                    that.par.removeChild(that.ele);
+                }
+            },60)
+        })(this);
+    }
+    //定时器创建对象
+    setInterval(function(){
+        for(var i=0;i<10;i++){
+           new SnowFlake(oBody,scWid,scHei);
+        }
+    },1000)
+
+</script>
+</html>
